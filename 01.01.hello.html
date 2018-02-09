@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, minoReact</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- アプリケーションはここに描画されます -->
+    </div>
+    <script src="react/build/react.js"></script>
+    <script src="react/build/react-dom.js"></script>
+    <script>
+    ReactDOM.render(
+      React.DOM.h1(
+        {
+          id: "my-heading",
+          // class
+          className: "masuno",
+          // for 他のidと結びつける時に使うらしい よくわからん
+          htmlFor: "me",
+          style: {
+            background: "#EEEEEE",
+            color: "white",
+            fontFamily: "Verdana",
+          }
+
+        },
+        React.DOM.span(null,
+          React.DOM.em(null, "Hell"),
+          "o"
+        ),
+        " world!"
+      ),
+      document.getElementById("app")
+    );
+
+    </script>
+  </body>
+</html>
