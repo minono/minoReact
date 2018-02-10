@@ -13,28 +13,51 @@
     <script>
 
     var TextAreaCounter = React.createClass({
+
       propTypes: {
-        text: React.PropTypes.string,
+        defaultValue: React.PropTypes.string,
       },
+
+      // データの取得
 
       getDefaultProps: function() {
         return {
           text: '',
         };
       },
+
+      getInitialState: function() {
+        return {
+          text: this.props.defaultValue,
+        };
+      },
+
+      // ステートの更新
+
+      _textChange: function(ev) {
+        this.setState({
+          text: ev.target.value,
+        });
+      },
+
+
+
+
       render: function() {
         return React.DOM.div(null,
           React.DOM.textarea({
-            defaultValue: this.props.text,
+            value: this.state.text,
+            onChange: this._textChange,
           }),
-          React.DOM.h3(null, this.props.text.length)
+          React.DOM.h3(null, this.state.text.length)
           );
       }
+
     });
     //
     ReactDOM.render(
       React.createElement(TextAreaCounter, {
-        text: "ますのさんがすきだーーー!",
+        defaultValue: "ますのさんがすきだーーー!",
       }),
       document.getElementById("app")
     );
